@@ -1,0 +1,13 @@
+{
+  "firstName": "Юра",
+  "lastName": "Титов",
+  "address": "Кутузовский проспект, д. 118",
+  "metroStation": "104",
+  "phone": "89223449955",
+  "rentTime": 113,
+  "deliveryDate": "2024-11-01",
+  "comment": "Как можно скорее",
+  "color": [
+    "GREY"
+  ]
+}
