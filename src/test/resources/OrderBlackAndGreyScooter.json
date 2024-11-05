@@ -1,0 +1,14 @@
+{
+  "firstName": "Юра",
+  "lastName": "Титов",
+  "address": "парк Горького, главный вход",
+  "metroStation": "104",
+  "phone": "89223449956",
+  "rentTime": 1,
+  "deliveryDate": "2024-11-11",
+  "comment": "на зимней резине пожалуйста",
+  "color": [
+    "GREY",
+    "BLACK"
+  ]
+}
