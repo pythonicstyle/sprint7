@@ -3,6 +3,7 @@ import static org.hamcrest.CoreMatchers.notNullValue;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import java.io.File;
+import org.junit.After;
 import org.junit.Test;
 
 public class GetOrdersListTest {
@@ -14,11 +15,7 @@ public class GetOrdersListTest {
     @DisplayName("Получение списка заказов курьера по ID")
     @Description("Проверка, что в тело ответа возвращается список заказов")
     public void testGetOrdersList() {
-
-        String json = "{\"login\": \"" + Constants.RANDOM_USERNAME + "\", \"password\": \"" + Constants.TEST_PASSWORD +
-            "\", \"firstName\": \"" + Constants.TEST_NAME + "\"}";
-
-        courierController.postCourier(json); // Создание курьера
+        courierController.postCourier(Constants.JSON_STRING); // Создание курьера
         Integer courierId = courierController.getCourier(Constants.RANDOM_USERNAME, Constants.TEST_PASSWORD)
             .then().extract().jsonPath().get("id"); // Получени ID курьера
         Integer track = ordersController
@@ -34,9 +31,18 @@ public class GetOrdersListTest {
             .and()
             .assertThat()
             .body("orders", notNullValue());
-        if (courierId != null) {
-            courierController.deleteCourier(courierId).then().statusCode(200);
-            System.out.printf("\nПользователь %d удален%n", courierId);
+    }
+
+    @After
+    public void tearDown() {
+        Integer id = courierController.getCourier(Constants.RANDOM_USERNAME, Constants.TEST_PASSWORD)
+            .then()
+            .extract()
+            .jsonPath()
+            .get("id");
+        if (id != null) {
+            courierController.deleteCourier(id).then().statusCode(200);
+            System.out.printf("\nПользователь %s удален", Constants.RANDOM_USERNAME);
         }
     }
 }
