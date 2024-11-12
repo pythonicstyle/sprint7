@@ -1,0 +1,13 @@
+{
+  "firstName": "Юра",
+  "lastName": "Титов",
+  "address": "парк Горького",
+  "metroStation": "104",
+  "phone": "89223449955",
+  "rentTime": 2,
+  "deliveryDate": "2025-07-07",
+  "comment": "Оставить у дерева",
+  "color": [
+    "BLACK"
+  ]
+}
